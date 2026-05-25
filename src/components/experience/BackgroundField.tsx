@@ -20,7 +20,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
       y: Math.random(),
       vx: (Math.random() - 0.5) * 0.00025,
       vy: (Math.random() - 0.5) * 0.00025,
-      r: Math.random() * 1.4 + 0.4,
+      r: Math.random() * 1.7 + 0.7,
       p: Math.random() * Math.PI * 2,
     }));
     const packets: { from: number; to: number; t: number }[] = [];
@@ -62,7 +62,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
       }
 
       // connections
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.35;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         const ax = a.x * w + ox, ay = a.y * h + oy;
@@ -86,7 +86,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
         const x = n.x * w + ox, y = n.y * h + oy;
         const pulse = 0.6 + Math.sin(n.p) * 0.4;
         ctx.fillStyle = `rgba(${bgBlue.r},${bgBlue.g},${bgBlue.b},${0.35 + pulse * 0.25})`;
-        ctx.beginPath(); ctx.arc(x, y, n.r * (0.9 + pulse * 0.3), 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, n.r * (1 + pulse * 0.35), 0, Math.PI * 2); ctx.fill();
       }
 
       // data packets
@@ -98,7 +98,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
         const y = (a.y + (b.y - a.y) * p.t) * h + oy;
         ctx.fillStyle = "rgba(145,145,255,0.95)";
         ctx.shadowBlur = 12; ctx.shadowColor = "#2323FF";
-        ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill();
         ctx.shadowBlur = 0;
       }
 
