@@ -36,7 +36,7 @@ export function CommHub() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             <div
               className="flex h-24 w-24 items-center justify-center rounded-full border border-neon"
-              style={{ background: "radial-gradient(circle, #39FF1455, transparent 70%)", boxShadow: "var(--neon-glow)" }}
+              style={{ background: "radial-gradient(circle, #2323FF55, transparent 70%)", boxShadow: "var(--neon-glow)" }}
             >
               <span className="text-[10px] uppercase tracking-[0.4em] text-neon">SIGNAL</span>
             </div>
@@ -73,7 +73,7 @@ export function CommHub() {
                 key={i}
                 x1="50%" y1="50%"
                 x2={`${n.x}%`} y2={`${n.y}%`}
-                stroke="#39FF14" strokeOpacity="0.18" strokeDasharray="4 6"
+                stroke="#2323FF" strokeOpacity="0.18" strokeDasharray="4 6"
               />
             ))}
           </svg>

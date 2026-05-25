@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
+  const bgBlue = { r: 35, g: 35, b: 255 };
 
   useEffect(() => {
     const canvas = ref.current!;
@@ -73,7 +74,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
           const max = 150 * 150;
           if (d2 < max) {
             const alpha = (1 - d2 / max) * 0.22;
-            ctx.strokeStyle = `rgba(57,255,20,${alpha})`;
+            ctx.strokeStyle = `rgba(${bgBlue.r},${bgBlue.g},${bgBlue.b},${alpha})`;
             ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
             if (Math.random() < 0.00008 * intensity) packets.push({ from: i, to: j, t: 0 });
           }
@@ -84,7 +85,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
       for (const n of nodes) {
         const x = n.x * w + ox, y = n.y * h + oy;
         const pulse = 0.6 + Math.sin(n.p) * 0.4;
-        ctx.fillStyle = `rgba(57,255,20,${0.35 + pulse * 0.25})`;
+        ctx.fillStyle = `rgba(${bgBlue.r},${bgBlue.g},${bgBlue.b},${0.35 + pulse * 0.25})`;
         ctx.beginPath(); ctx.arc(x, y, n.r * (0.9 + pulse * 0.3), 0, Math.PI * 2); ctx.fill();
       }
 
@@ -95,8 +96,8 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
         const a = nodes[p.from], b = nodes[p.to];
         const x = (a.x + (b.x - a.x) * p.t) * w + ox;
         const y = (a.y + (b.y - a.y) * p.t) * h + oy;
-        ctx.fillStyle = "rgba(180,255,160,0.95)";
-        ctx.shadowBlur = 12; ctx.shadowColor = "#39FF14";
+        ctx.fillStyle = "rgba(145,145,255,0.95)";
+        ctx.shadowBlur = 12; ctx.shadowColor = "#2323FF";
         ctx.beginPath(); ctx.arc(x, y, 2, 0, Math.PI * 2); ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -105,9 +106,9 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
       scan += dt * 0.06;
       const sy = (scan % (h + 200)) - 100;
       const grad = ctx.createLinearGradient(0, sy - 60, 0, sy + 60);
-      grad.addColorStop(0, "rgba(57,255,20,0)");
-      grad.addColorStop(0.5, "rgba(57,255,20,0.05)");
-      grad.addColorStop(1, "rgba(57,255,20,0)");
+      grad.addColorStop(0, "rgba(35,35,255,0)");
+      grad.addColorStop(0.5, "rgba(35,35,255,0.05)");
+      grad.addColorStop(1, "rgba(35,35,255,0)");
       ctx.fillStyle = grad; ctx.fillRect(0, sy - 60, w, 120);
 
       raf = requestAnimationFrame(tick);
@@ -137,7 +138,7 @@ export function BackgroundField({ intensity = 1 }: { intensity?: number }) {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(57,255,20,0.06), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(57,255,20,0.04), transparent 60%)",
+            "radial-gradient(ellipse at 50% 0%, rgba(35,35,255,0.08), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(35,35,255,0.05), transparent 60%)",
         }}
       />
     </div>

@@ -49,7 +49,7 @@ export function SystemCore() {
         {/* Halo */}
         <div
           className="absolute left-1/2 top-1/2 -z-10 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(57,255,20,0.35), transparent 60%)" }}
+          style={{ background: "radial-gradient(circle, rgba(35,35,255,0.35), transparent 60%)" }}
         />
         {/* Rings */}
         {[260, 320, 380].map((r, i) => (
@@ -62,7 +62,7 @@ export function SystemCore() {
           >
             <span
               className="absolute h-1.5 w-1.5 rounded-full bg-[color:var(--neon)]"
-              style={{ top: -3, left: "50%", boxShadow: "0 0 12px #39FF14" }}
+              style={{ top: -3, left: "50%", background: "#2323FF", boxShadow: "0 0 12px #2323FF" }}
             />
           </motion.div>
         ))}
@@ -73,7 +73,7 @@ export function SystemCore() {
           </div>
           <h1
             className="text-6xl font-black uppercase tracking-[0.18em] text-neon sm:text-8xl"
-            style={{ textShadow: "0 0 40px rgba(57,255,20,0.6)" }}
+            style={{ textShadow: "0 0 40px rgba(35,35,255,0.6)" }}
           >
             SUMIT
           </h1>
@@ -103,7 +103,7 @@ export function SystemCore() {
                 scale: { delay: 0.2 + i * 0.15, duration: 0.6 },
                 y: { duration: 6 + i, repeat: Infinity, ease: "easeInOut" },
               }}
-              whileHover={{ scale: 1.05, borderColor: "rgba(57,255,20,0.7)" }}
+              whileHover={{ scale: 1.05, borderColor: "rgba(35,35,255,0.7)" }}
             >
               <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{o.label}</div>
               <div className="mt-1 text-base font-bold text-neon">

@@ -42,7 +42,7 @@ export function Header() {
               rel="noreferrer"
               className="magnetic group flex items-center gap-2 rounded-md border border-transparent px-3 py-1.5 text-xs uppercase tracking-widest text-foreground/80 transition hover:border-neon hover:text-neon"
             >
-              <l.icon className="h-3.5 w-3.5 transition group-hover:drop-shadow-[0_0_6px_#39FF14]" />
+              <l.icon className="h-3.5 w-3.5 transition group-hover:drop-shadow-[0_0_6px_#2323FF]" />
               {l.label}
             </a>
           ))}

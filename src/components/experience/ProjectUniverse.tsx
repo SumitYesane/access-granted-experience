@@ -46,7 +46,7 @@ const projects: Project[] = [
     ],
     github: "/",
     demo: "/",
-    hue: "#39FF14",
+    hue: "#2323FF",
     pos: { x: "22%", y: "30%", size: 220 },
   },
   {
@@ -252,7 +252,7 @@ export function ProjectUniverse() {
                 <a href={active.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded border border-neon/40 px-4 py-2 text-xs uppercase tracking-widest text-neon hover:bg-neon/10">
                   <Github className="h-3.5 w-3.5" /> Source
                 </a>
-                <a href={active.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded bg-neon px-4 py-2 text-xs uppercase tracking-widest text-black hover:opacity-90" style={{ background: "#39FF14" }}>
+                <a href={active.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded bg-neon px-4 py-2 text-xs uppercase tracking-widest text-black hover:opacity-90" style={{ background: "#2323FF" }}>
                   <ExternalLink className="h-3.5 w-3.5" /> Live
                 </a>
               </div>

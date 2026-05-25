@@ -21,7 +21,7 @@ export function GlitchTransition({ onDone }: { onDone: () => void }) {
           animate={{
             x: [0, (i % 2 ? 1 : -1) * 80, 0],
             opacity: [0, 0.9, 0],
-            backgroundColor: ["rgba(57,255,20,0.2)", "rgba(255,255,255,0.05)", "rgba(57,255,20,0.0)"],
+            backgroundColor: ["rgba(35,35,255,0.2)", "rgba(255,255,255,0.05)", "rgba(35,35,255,0.0)"],
           }}
           transition={{ duration: 1.2, delay: i * 0.04, ease: "easeOut" }}
         />
@@ -34,7 +34,7 @@ export function GlitchTransition({ onDone }: { onDone: () => void }) {
           <motion.span
             key={`p-${i}`}
             className="absolute left-1/2 top-1/2 h-1 w-1 rounded-full bg-[color:var(--neon)]"
-            style={{ boxShadow: "0 0 12px #39FF14" }}
+            style={{ boxShadow: "0 0 12px #2323FF" }}
             initial={{ x: 0, y: 0, opacity: 1 }}
             animate={{
               x: Math.cos(angle) * dist,
@@ -53,7 +53,7 @@ export function GlitchTransition({ onDone }: { onDone: () => void }) {
       >
         <span
           className="glitch text-3xl font-black uppercase tracking-[0.4em] text-neon sm:text-5xl"
-          style={{ textShadow: "0 0 30px #39FF14" }}
+          style={{ textShadow: "0 0 30px #2323FF" }}
         >
           ░ Decompiling ░
         </span>

@@ -119,7 +119,7 @@ export function BootSequence({ onComplete }: { onComplete: () => void }) {
             </div>
             <h1
               className="text-5xl font-black uppercase tracking-[0.25em] text-neon sm:text-7xl"
-              style={{ textShadow: "0 0 32px rgba(57,255,20,0.8), 0 0 80px rgba(57,255,20,0.4)" }}
+              style={{ textShadow: "0 0 32px rgba(35,35,255,0.8), 0 0 80px rgba(35,35,255,0.4)" }}
             >
               Access Granted
             </h1>
