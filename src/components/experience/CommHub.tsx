@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 const nodes = [
-  { label: "GitHub", icon: Github, href: "https://github.com", x: 50, y: 18 },
-  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com", x: 18, y: 62 },
-  { label: "Mail", icon: Mail, href: "mailto:sumit@example.com", x: 82, y: 62 },
-  { label: "Resume", icon: FileText, href: "#", x: 50, y: 94 },
+  { label: "GitHub", icon: Github, href: "/", x: 50, y: 18 },
+  { label: "LinkedIn", icon: Linkedin, href: "/", x: 18, y: 62 },
+  { label: "Mail", icon: Mail, href: "#comm", x: 82, y: 62 },
+  { label: "Resume", icon: FileText, href: "/", x: 50, y: 94 },
 ];
 
 export function CommHub() {

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { MapPin, Github, Linkedin, FileText, Mail } from "lucide-react";
 
 const links = [
-  { label: "GitHub", icon: Github, href: "https://github.com" },
-  { label: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { label: "Resume", icon: FileText, href: "#" },
+  { label: "GitHub", icon: Github, href: "/" },
+  { label: "LinkedIn", icon: Linkedin, href: "/" },
+  { label: "Resume", icon: FileText, href: "/" },
   { label: "Contact", icon: Mail, href: "#comm" },
 ];
 

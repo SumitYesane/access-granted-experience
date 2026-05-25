@@ -6,10 +6,28 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+const injectedHeadScriptsModule = "tanstack-start-injected-head-scripts:v";
+
 // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
+  },
+  vite: {
+    plugins: [
+      {
+        name: "tanstack-start-injected-head-scripts-shim",
+        enforce: "pre",
+        resolveId(id) {
+          if (id === injectedHeadScriptsModule) return id;
+        },
+        load(id) {
+          if (id === injectedHeadScriptsModule) {
+            return "export const injectedHeadScripts = undefined;";
+          }
+        },
+      },
+    ],
   },
 });
