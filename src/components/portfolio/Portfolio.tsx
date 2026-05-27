@@ -60,9 +60,19 @@ export default function Portfolio() {
 
       <motion.pre
         className="pf-code-float"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.55 }}
-        transition={{ delay: 1.2, duration: 1 }}
+        initial={{ opacity: 0, x: -12, y: 12, filter: "blur(6px)" }}
+        animate={{
+          opacity: [0.4, 0.62, 0.48],
+          x: [0, 8, 0],
+          y: [0, -10, 0],
+          filter: ["blur(0px)", "blur(0px)", "blur(0.6px)"],
+        }}
+        transition={{
+          opacity: { delay: 1.2, duration: 4.8, repeat: Infinity, ease: "easeInOut" },
+          x: { delay: 1.2, duration: 6, repeat: Infinity, ease: "easeInOut" },
+          y: { delay: 1.2, duration: 6, repeat: Infinity, ease: "easeInOut" },
+          filter: { delay: 1.2, duration: 3.2, repeat: Infinity, ease: "easeInOut" },
+        }}
       >
         {codeSnippet}
       </motion.pre>

@@ -4,8 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundField } from "@/components/experience/BackgroundField";
 import { BootSequence } from "@/components/experience/BootSequence";
 import { GlitchTransition } from "@/components/experience/GlitchTransition";
+import { ExperienceLogs } from "@/components/experience/ExperienceLogs";
 import { SkillTree } from "@/components/experience/SkillTree";
 import { ProjectUniverse } from "@/components/experience/ProjectUniverse";
+import { EducationMatrix } from "@/components/education/EducationMatrix";
 import { MissionLogs } from "@/components/experience/MissionLogs";
 import { CommHub } from "@/components/experience/CommHub";
 import { Terminal } from "@/components/experience/Terminal";
@@ -59,8 +61,10 @@ function Index() {
         >
           <main>
             <Portfolio />
+            <ExperienceLogs />
             <SkillTree />
             <ProjectUniverse />
+            <EducationMatrix />
             <MissionLogs />
             <CommHub />
           </main>
