@@ -4,25 +4,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BackgroundField } from "@/components/experience/BackgroundField";
 import { BootSequence } from "@/components/experience/BootSequence";
 import { GlitchTransition } from "@/components/experience/GlitchTransition";
-import { Header } from "@/components/experience/Header";
-import { SystemCore } from "@/components/experience/SystemCore";
 import { SkillTree } from "@/components/experience/SkillTree";
 import { ProjectUniverse } from "@/components/experience/ProjectUniverse";
 import { MissionLogs } from "@/components/experience/MissionLogs";
 import { CommHub } from "@/components/experience/CommHub";
 import { Terminal } from "@/components/experience/Terminal";
+import Portfolio from "@/components/portfolio/Portfolio";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SUMIT // ACCESS GRANTED — Engineer / AI Builder" },
+      { title: "SUMIT // ACCESS GRANTED - Engineer / AI Builder" },
       {
         name: "description",
         content:
-          "Not a portfolio — a secure system to enter. Full-stack engineer and AI builder based in Pune, India.",
+          "Immersive engineering portfolio and AI systems showcase with a holographic landing experience.",
       },
       { property: "og:title", content: "SUMIT // ACCESS GRANTED" },
-      { property: "og:description", content: "Enter a private AI engineering system." },
+      {
+        property: "og:description",
+        content: "Enter a private AI engineering system with a holographic landing experience.",
+      },
     ],
   }),
   component: Index,
@@ -55,9 +57,8 @@ function Index() {
           transition={{ duration: 0.8 }}
           className="relative z-10"
         >
-          <Header />
           <main>
-            <SystemCore />
+            <Portfolio />
             <SkillTree />
             <ProjectUniverse />
             <MissionLogs />
