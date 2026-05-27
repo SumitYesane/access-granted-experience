@@ -1,14 +1,19 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { experienceTaskBlock, experienceYearLogs } from "./experienceLogs.data";
 import "./experienceLogs.css";
 
 export function ExperienceLogs() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
+  const [selectedLogId, setSelectedLogId] = useState(
+    experienceYearLogs.find((log) => log.state === "active")?.id ?? experienceYearLogs[0]?.id,
+  );
+  const selectedLog =
+    experienceYearLogs.find((log) => log.id === selectedLogId) ?? experienceYearLogs[0];
 
   return (
-    <section ref={ref} className="exp-logs">
+    <section id="experience-logs" ref={ref} className="exp-logs">
       <div className="exp-logs__inner">
         <motion.div
           className="exp-logs__topline"
@@ -61,7 +66,14 @@ export function ExperienceLogs() {
                       <div className="exp-logs__year-label">{log.yearLabel}</div>
                     </div>
 
-                    <div className="exp-logs__bullet-card">
+                    <button
+                      type="button"
+                      className={`exp-logs__bullet-card${
+                        selectedLogId === log.id ? " exp-logs__bullet-card--selected" : ""
+                      }`}
+                      onClick={() => setSelectedLogId(log.id)}
+                      aria-pressed={selectedLogId === log.id}
+                    >
                       <ul className="exp-logs__bullet-list">
                         {log.bullets.map((bullet) => (
                           <li key={bullet} className="exp-logs__bullet-item">
@@ -69,7 +81,7 @@ export function ExperienceLogs() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </button>
                   </motion.article>
                 ))}
               </div>
@@ -105,7 +117,7 @@ export function ExperienceLogs() {
 
                 <div className="exp-logs__task-heading">[Executed Tasks]</div>
                 <ul className="exp-logs__task-list">
-                  {experienceTaskBlock.tasks.map((task) => (
+                  {selectedLog.tasks.map((task) => (
                     <li key={task} className="exp-logs__task-item">
                       {task}
                     </li>

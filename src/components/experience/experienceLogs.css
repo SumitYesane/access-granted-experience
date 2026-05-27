@@ -172,10 +172,16 @@
 }
 
 .exp-logs__year-card--active {
+  position: relative;
+  z-index: 1;
   border-color: rgba(94, 240, 255, 0.6);
+  background: rgba(5, 10, 31, 0.55);
+  backdrop-filter: blur(10px);
   box-shadow:
-    0 0 24px rgba(94, 240, 255, 0.4),
-    inset 0 0 28px rgba(94, 240, 255, 0.14);
+    0 0 12px rgba(94, 240, 255, 0.55),
+    0 0 32px rgba(94, 240, 255, 0.25),
+    inset 0 0 24px rgba(94, 240, 255, 0.05);
+  filter: drop-shadow(0 0 10px rgba(94, 240, 255, 0.28));
 }
 
 .exp-logs__year-label {
@@ -184,6 +190,10 @@
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.exp-logs__year-card--active .exp-logs__year-label {
+  color: #cafdff;
 }
 
 .exp-logs__year-range {
@@ -196,8 +206,32 @@
 .exp-logs__bullet-card {
   display: flex;
   align-items: center;
+  width: 100%;
   padding: 1rem 1.2rem;
+  border: 1px solid var(--exp-border);
+  color: inherit;
+  text-align: left;
+  background: linear-gradient(180deg, rgba(14, 31, 50, 0.88), rgba(6, 19, 33, 0.85));
   clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%);
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.exp-logs__bullet-card:hover,
+.exp-logs__bullet-card--selected {
+  border-color: rgba(94, 240, 255, 0.6);
+  box-shadow:
+    inset 0 0 26px rgba(94, 240, 255, 0.12),
+    0 0 18px rgba(94, 240, 255, 0.18);
+}
+
+.exp-logs__bullet-card:hover {
+  transform: translateX(2px);
+}
+
+.exp-logs__bullet-card:focus-visible {
+  outline: 1px solid rgba(94, 240, 255, 0.9);
+  outline-offset: 2px;
 }
 
 .exp-logs__bullet-list,

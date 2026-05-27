@@ -89,7 +89,9 @@ export default function Portfolio() {
               <span className="pf-brand-dot" />
               AI/ML ENGINEER // PORTFOLIO
             </div>
-            <div className="pf-brand-sub">MACHINE LEARNING | DEEP LEARNING BUILDER</div>
+            <a className="pf-brand-sub" href="#experience-logs">
+              MACHINE LEARNING | DEEP LEARNING BUILDER
+            </a>
           </div>
           <div className="pf-nav-links">
             <a className="pf-nav-link" href="#location">
