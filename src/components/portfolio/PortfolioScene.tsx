@@ -6,7 +6,7 @@ import * as THREE from "three";
 
 const NEON = "#5ef0ff";
 
-function WireSphere() {
+function WireSphere({ scale = 1 }: { scale?: number }) {
   const group = useRef<THREE.Group>(null!);
   useFrame((_, dt) => {
     if (!group.current) return;
@@ -14,7 +14,7 @@ function WireSphere() {
     group.current.rotation.x += dt * 0.05;
   });
   return (
-    <group ref={group}>
+    <group ref={group} scale={scale}>
       <mesh>
         <icosahedronGeometry args={[1.6, 2]} />
         <meshBasicMaterial color={NEON} wireframe transparent opacity={0.85} />
@@ -128,6 +128,30 @@ function ConstellationLines() {
   );
 }
 
+export function PortfolioSphere() {
+  return (
+    <Canvas
+      camera={{ position: [0, 0, 6], fov: 55 }}
+      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 2]}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <group position={[0, 0.4, 0]}>
+        <WireSphere scale={0.85} />
+      </group>
+
+      <EffectComposer>
+        <Bloom
+          intensity={1.2}
+          luminanceThreshold={0.05}
+          luminanceSmoothing={0.9}
+          mipmapBlur
+        />
+      </EffectComposer>
+    </Canvas>
+  );
+}
+
 export default function PortfolioScene() {
   return (
     <Canvas
@@ -136,7 +160,6 @@ export default function PortfolioScene() {
       dpr={[1, 2]}
       style={{ width: "100%", height: "100%" }}
     >
-      <color attach="background" args={["#02030a"]} />
       <fog attach="fog" args={["#02030a", 6, 16]} />
 
       <ConstellationLines />

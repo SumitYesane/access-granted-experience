@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Linkedin, FileText, Mail, MapPin, ChevronDown } from "lucide-react";
 import "./portfolio.css";
@@ -8,7 +8,9 @@ import cloudImg from "@/assets/pf-cloud.png";
 import matrixImg from "@/assets/pf-matrix.jpg";
 import codeImg from "@/assets/pf-code.jpg";
 
-const PortfolioScene = lazy(() => import("./PortfolioScene"));
+const PortfolioSphere = lazy(() =>
+  import("./PortfolioScene").then((module) => ({ default: module.PortfolioSphere })),
+);
 
 const cubes = [
   { img: robotImg, text: "Research Agents", pos: "pf-cube-1" },
@@ -28,6 +30,7 @@ model.train(epochs=100)
 
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
 
   return (
@@ -39,8 +42,8 @@ export default function Portfolio() {
 
       {mounted && (
         <Suspense fallback={null}>
-          <div className="pf-canvas">
-            <PortfolioScene />
+          <div className="pf-sphere" aria-hidden>
+            <PortfolioSphere />
           </div>
         </Suspense>
       )}
