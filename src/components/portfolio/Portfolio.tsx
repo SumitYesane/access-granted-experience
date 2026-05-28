@@ -8,9 +8,7 @@ import cloudImg from "@/assets/pf-cloud.png";
 import matrixImg from "@/assets/pf-matrix.jpg";
 import codeImg from "@/assets/pf-code.jpg";
 
-const PortfolioSphere = lazy(() =>
-  import("./cinematic-globe").then((module) => ({ default: module.CinematicGlobe })),
-);
+const PortfolioSphere = lazy(() => import("@/components/globe-preview/DigitalGlobe"));
 
 const cubes = [
   { img: robotImg, text: "Research Agents", pos: "pf-cube-1" },
@@ -49,7 +47,7 @@ export default function Portfolio() {
       )}
 
       <motion.img
-        //src={brainImg}
+        src={brainImg}
         alt=""
         aria-hidden
         className="pf-brain"
@@ -147,7 +145,7 @@ export default function Portfolio() {
           </div>
         </motion.div>
 
-        {/* <div className="pf-hud-frame" aria-hidden /> */}
+        <div className="pf-hud-frame" aria-hidden />
       </div>
     </div>
   );

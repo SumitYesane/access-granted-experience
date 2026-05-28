@@ -3,12 +3,15 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import * as THREE from "three";
 
+const INNER_GLOBE_RADIUS = 2;
+const OUTER_LATTICE_RADIUS = 2.7;
+
 function InnerParticleGlobe({ count = 4000 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
-    const radius = 2.2;
+    const radius = INNER_GLOBE_RADIUS;
 
     for (let i = 0; i < count; i++) {
       const u = Math.random();
@@ -61,7 +64,7 @@ function OuterLattice() {
 
   // 1. CREATE BASE GEOMETRY & GENERATE EDGES NATIVELY
   const { edgeGeometry, baseGeometry } = useMemo(() => {
-    const base = new THREE.IcosahedronGeometry(3, 2);
+    const base = new THREE.IcosahedronGeometry(OUTER_LATTICE_RADIUS, 2);
     // EdgesGeometry keeps the exact vertex array layout for lines
     const edges = new THREE.EdgesGeometry(base); 
     return { baseGeometry: base, edgeGeometry: edges };
@@ -264,9 +267,10 @@ function OverlayCopy() {
 
 export default function DigitalGlobePreview() {
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh", background: "#000" }}>
+    <div style={{ position: "relative", width: "100%", height: "100%", background: "#000" }}>
       <div style={{ width: "100%", height: "100%" }}>
-        <Canvas camera={{ position: [0, 0, 7], fov: 60 }}>
+        <Canvas camera={{ position: [0, 0, 7], fov: 60 }} gl={{ alpha: false }}>
+          <color attach="background" args={["#000000"]} />
           <ambientLight intensity={0.5} />
           <pointLight position={[10, 10, 10]} intensity={1.5} />
           <InnerParticleGlobe count={5000} />
