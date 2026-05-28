@@ -202,7 +202,7 @@ function OuterLattice() {
       <points geometry={baseGeometry}>
         <pointsMaterial
           vertexColors={true}
-          size={0.27}
+          size={0.44}
           sizeAttenuation={true}
           transparent
           opacity={0.96}
@@ -213,9 +213,10 @@ function OuterLattice() {
             shader.fragmentShader = shader.fragmentShader.replace(
               "vec4 diffuseColor = vec4( diffuse, opacity );",
               `float dist = length(gl_PointCoord - vec2(0.5));
-              float glow = 1.0 - smoothstep(0.08, 0.5, dist);
-              float core = 1.0 - smoothstep(0.0, 0.18, dist);
-              float alpha = core * 0.62 + glow * 0.3;
+              float solidCore = 1.0 - smoothstep(0.0, 0.22, dist);
+              float core = 1.0 - smoothstep(0.0, 0.34, dist);
+              float glow = 1.0 - smoothstep(0.22, 0.5, dist);
+              float alpha = max(solidCore * 0.98, core * 0.82 + glow * 0.18);
               vec4 diffuseColor = vec4(diffuse, opacity * alpha);`
             );
             shader.fragmentShader = shader.fragmentShader.replace(
