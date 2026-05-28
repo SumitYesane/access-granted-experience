@@ -9,7 +9,7 @@ import matrixImg from "@/assets/pf-matrix.jpg";
 import codeImg from "@/assets/pf-code.jpg";
 
 const PortfolioSphere = lazy(() =>
-  import("./PortfolioScene").then((module) => ({ default: module.PortfolioSphere })),
+  import("./cinematic-globe").then((module) => ({ default: module.CinematicGlobe })),
 );
 
 const cubes = [
@@ -49,7 +49,7 @@ export default function Portfolio() {
       )}
 
       <motion.img
-        src={brainImg}
+        //src={brainImg}
         alt=""
         aria-hidden
         className="pf-brain"
@@ -147,7 +147,7 @@ export default function Portfolio() {
           </div>
         </motion.div>
 
-        <div className="pf-hud-frame" aria-hidden />
+        {/* <div className="pf-hud-frame" aria-hidden /> */}
       </div>
     </div>
   );

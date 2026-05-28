@@ -3,9 +3,13 @@
 .pf-root {
   --pf-bg: #02030a;
   --pf-bg-2: #050a1f;
-  --pf-cyan: #5ef0ff;
-  --pf-cyan-dim: rgba(94, 240, 255, 0.55);
-  --pf-cyan-soft: rgba(94, 240, 255, 0.12);
+  --pf-cyan: #7df9ff;
+  --pf-blue: #33b8ff;
+  --pf-purple: #c86bff;
+  --pf-magenta: #ff8cf5;
+  --pf-purple-dim: rgba(200, 107, 255, 0.44);
+  --pf-cyan-dim: rgba(125, 249, 255, 0.62);
+  --pf-cyan-soft: rgba(125, 249, 255, 0.14);
   --pf-text: #d6f6ff;
   --pf-text-dim: rgba(214, 246, 255, 0.65);
   --pf-border: rgba(94, 240, 255, 0.35);
@@ -35,7 +39,49 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: auto;
+  cursor: default;
+  filter: saturate(1.24) contrast(1.08) brightness(1.04);
+}
+
+.pf-sphere::before,
+.pf-sphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   pointer-events: none;
+}
+
+.pf-sphere::before {
+  background:
+    radial-gradient(circle at 50% 43%, rgba(122, 248, 255, 0.46) 0 10%, rgba(122, 248, 255, 0.22) 16%, transparent 31%),
+    radial-gradient(circle at 53% 43%, rgba(255, 140, 245, 0.22) 0 11%, transparent 26%),
+    radial-gradient(circle at 48% 44%, rgba(51, 184, 255, 0.24) 0 14%, transparent 33%),
+    radial-gradient(circle at 50% 44%, transparent 0 29%, rgba(125, 249, 255, 0.2) 33%, transparent 41%),
+    radial-gradient(circle at 50% 44%, transparent 0 34%, rgba(255, 140, 245, 0.12) 38%, transparent 46%);
+  filter: blur(30px);
+  opacity: 1;
+  mix-blend-mode: screen;
+}
+
+.pf-sphere::after {
+  background:
+    radial-gradient(ellipse at 50% 44%, transparent 0 16%, rgba(125, 249, 255, 0.24) 21%, transparent 28%),
+    radial-gradient(ellipse at 50% 44%, transparent 0 23%, rgba(200, 107, 255, 0.18) 27%, transparent 34%),
+    radial-gradient(ellipse at 50% 44%, transparent 0 31%, rgba(238, 248, 255, 0.16) 35%, transparent 41%),
+    radial-gradient(ellipse at 43% 35%, rgba(244, 251, 255, 0.26) 0 3%, transparent 12%),
+    radial-gradient(ellipse at 59% 63%, rgba(89, 239, 255, 0.14) 0 6%, transparent 18%),
+    conic-gradient(from 215deg at 50% 44%, transparent 0deg 34deg, rgba(255,255,255,0.18) 50deg 76deg, transparent 92deg 230deg, rgba(125, 249, 255, 0.16) 246deg 312deg, transparent 328deg 360deg);
+  mix-blend-mode: screen;
+  animation: pf-sphere-breathe 6s ease-in-out infinite;
+  opacity: 0.95;
+}
+
+.pf-sphere canvas {
+  filter:
+    drop-shadow(0 0 22px rgba(89, 239, 255, 0.18))
+    drop-shadow(0 0 44px rgba(89, 239, 255, 0.14))
+    drop-shadow(0 0 58px rgba(240, 140, 255, 0.12));
 }
 
 .pf-overlay {
@@ -356,6 +402,11 @@
   50% { transform: translateY(6px); opacity: 1; }
 }
 
+@keyframes pf-sphere-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(0.98); }
+  50% { opacity: 0.9; transform: scale(1.03); }
+}
+
 @media (max-width: 720px) {
   .pf-nav-links { gap: 14px; }
   .pf-nav-link span { display: none; }
@@ -368,4 +419,5 @@
   .pf-cube-4 { left: 74%; }
   .pf-brain { width: 88%; left: 50%; top: 36%; transform: translate(-50%, -50%); }
   .pf-code-float { display: none; }
+  .pf-sphere { filter: saturate(1.05); }
 }
